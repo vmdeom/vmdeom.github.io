@@ -7,61 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="btn-moralize">Moralizap</button>
-    <input id="input-game" type="text">
-    <script>
-
-        function getGame(gameName){
-            let url = 'https://www.howlongtobeat.com/api/search'
-
-            let options = {
-                method: 'POST',
-                mode: 'cors',
-                headers:{
-                    'Content-Type': 'application/json; charset=utf-8',
-                    Referer: 'https://howlongtobeat.com/',
-                    Origin: 'https://howlongtobeat.com/'
-                },
-                body: JSON.stringify({
-                    "searchType": "games",
-                    "searchTerms": [
-                        gameName
-                    ],
-                    "searchPage": 1,
-                    "size": 20,
-                    "searchOptions": {
-                        "games": {
-                            "userId": 0,
-                            "platform": "",
-                            "sortCategory": "popular",
-                            "rangeCategory": "main",
-                            "rangeTime": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "gameplay": {
-                                "perspective": "",
-                                "flow": "",
-                                "genre": ""
-                            },
-                            "modifier": ""
-                        },
-                        "users": {
-                            "sortCategory": "postcount"
-                        },
-                        "filter": "",
-                        "sort": 0,
-                        "randomizer": 0
-                    }
-                })
-            }
-
-            fetch(url, options)
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .then(err => console.log(err))
-        }
-
-    </script>
+    <div>
+        <form action="http://ec2-54-207-96-201.sa-east-1.compute.amazonaws.com:8080" method="get">
+            <label for="game">Insira o nome do Jogo(ex. Zelda)</label><br>
+            <input id="game" type="text" name="game">
+            <button type="submit">Pesquisar</button>
+        </form>
+    </div>
 </body>
 </html>
